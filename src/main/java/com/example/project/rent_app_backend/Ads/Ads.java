@@ -22,13 +22,13 @@ public class Ads {
     private String description;
     private String phoneNumber;
     private String email;
-    private int creatorId;
+    private String creatorId;
 
     public Ads(){
 
     }
 
-    public Ads(String id, String adress, String ville, float prix, String prixBy, int roomNumber, String tenantType, String picture, String description, String phoneNumber, String email, int creatorId) {
+    public Ads(String id, String adress, String ville, float prix, String prixBy, int roomNumber, String tenantType, String picture, String description, String phoneNumber, String email, String creatorId) {
         this.id = id;
         this.adress = adress;
         this.ville = ville;
@@ -60,12 +60,12 @@ public class Ads {
         this.tenantType = tenantType;
     }
 
-    public int getCreatorId() {
+    public String getCreatorId() {
 
         return creatorId;
     }
 
-    public void setCreatorId(int creatorId) {
+    public void setCreatorId(String creatorId) {
         this.creatorId = creatorId;
     }
 

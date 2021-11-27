@@ -14,7 +14,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/api/auth/**",
             "/api/ads**/",
             "/api**/auth**/register",
-            "**/api**/auth"
+            "**/api**/auth",
+            "/api/ads/**",
+            "/api**/auth**/userinfo**/**",
+
     };
 
     @Bean

@@ -1,6 +1,7 @@
 package com.example.project.rent_app_backend.security;
 
 
+import com.example.project.rent_app_backend.Ads.Ads;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -47,7 +48,10 @@ public class AuthController {
         JwtResponse response = new JwtResponse(token,user.getName());
         return response;
 
-
+    }
+    @GetMapping(value = {"userinfo/{id}","/userinfo/{id}"})
+    public AppUser getUserById(@PathVariable String id){
+        return userService.findUserById(id);
     }
 }
 
