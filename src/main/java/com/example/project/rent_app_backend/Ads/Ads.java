@@ -1,9 +1,13 @@
 package com.example.project.rent_app_backend.Ads;
 
+import org.bson.BsonBinarySubType;
+import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotNull;
+import java.io.IOException;
 
 @Document(collection = "ads")
 public class Ads {
@@ -18,7 +22,7 @@ public class Ads {
     private String  prixBy;
     private int  roomNumber;
     private String  tenantType;
-    private String  picture;
+    private Binary picture;
     private String description;
     private String phoneNumber;
     private String email;
@@ -28,7 +32,7 @@ public class Ads {
 
     }
 
-    public Ads(String id, String adress, String ville, float prix, String prixBy, int roomNumber, String tenantType, String picture, String description, String phoneNumber, String email, String creatorId) {
+    public Ads(String id, String adress, String ville, float prix, String prixBy, int roomNumber, String tenantType, Binary picture, String description, String phoneNumber, String email, String creatorId) {
         this.id = id;
         this.adress = adress;
         this.ville = ville;
@@ -42,6 +46,8 @@ public class Ads {
         this.email = email;
         this.creatorId = creatorId;
     }
+
+
 
     public void setRoomNumber(int roomNumber) {
         this.roomNumber = roomNumber;
@@ -114,11 +120,11 @@ public class Ads {
         return tenantType;
     }
 
-    public String getPicture() {
+    public Binary getPicture() {
         return picture;
     }
 
-    public void setPicture(String picture) {
+    public void setPicture(Binary picture) {
         this.picture = picture;
     }
 
