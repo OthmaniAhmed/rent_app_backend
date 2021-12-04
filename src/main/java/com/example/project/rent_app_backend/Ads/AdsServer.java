@@ -8,6 +8,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,5 +34,15 @@ public class AdsServer {
 
     public void delete(String id){
         adsRepository.deleteById(id);
+    }
+
+    public String saveImage(MultipartFile image) throws IOException {
+        String folder = "C:\\Users\\GAMER\\Pojects\\Rent Application\\renting-application\\src\\assets\\photos/";
+        byte[] bytes = image.getBytes();
+        Path path = Paths.get(folder +image.getOriginalFilename());
+        Files.write(path,bytes);
+
+        return "../../../assets/photos/" +image.getOriginalFilename();
+
     }
 }

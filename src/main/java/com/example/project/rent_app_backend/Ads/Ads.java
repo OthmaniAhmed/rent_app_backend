@@ -22,7 +22,7 @@ public class Ads {
     private String  prixBy;
     private int  roomNumber;
     private String  tenantType;
-    private Binary picture;
+    private String picture;
     private String description;
     private String phoneNumber;
     private String email;
@@ -32,7 +32,7 @@ public class Ads {
 
     }
 
-    public Ads(String id, String adress, String ville, float prix, String prixBy, int roomNumber, String tenantType, Binary picture, String description, String phoneNumber, String email, String creatorId) {
+    public Ads(String id, String adress, String ville, float prix, String prixBy, int roomNumber, String tenantType, String picture, String description, String phoneNumber, String email, String creatorId) {
         this.id = id;
         this.adress = adress;
         this.ville = ville;
@@ -120,11 +120,11 @@ public class Ads {
         return tenantType;
     }
 
-    public Binary getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(Binary picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 

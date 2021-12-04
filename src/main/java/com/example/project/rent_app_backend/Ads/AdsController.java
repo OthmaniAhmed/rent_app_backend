@@ -37,8 +37,12 @@ public class AdsController {
     @PostMapping(value = {"", "/"})
     public void createNewAd( @RequestParam("post") String post, @RequestParam("image") MultipartFile image ) throws IOException {
 
-        Ads ad = new ObjectMapper().readValue(post, Ads.class);
-        ad.setPicture(new Binary(BsonBinarySubType.BINARY,image.getBytes()));
+      String imagePath =  adsServer.saveImage(image);
+
+       Ads ad = new ObjectMapper().readValue(post, Ads.class);
+
+       ad.setPicture(imagePath);
+        //  ad.setPicture(new Binary(BsonBinarySubType.BINARY,image.getBytes()));
         adsServer.save(ad);
     }
 
