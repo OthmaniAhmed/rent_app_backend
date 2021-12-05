@@ -1,21 +1,15 @@
 package com.example.project.rent_app_backend.Ads;
 
-import org.bson.BsonBinarySubType;
-import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.web.multipart.MultipartFile;
-
 import javax.validation.constraints.NotNull;
-import java.io.IOException;
+
 
 @Document(collection = "ads")
 public class Ads {
     @Id
     private String id ;
-
     private String  adress ;
-
     @NotNull(message = "ville is required")
     private String  ville;
     private float  prix;

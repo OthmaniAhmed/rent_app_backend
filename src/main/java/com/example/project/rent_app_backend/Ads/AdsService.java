@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class AdsServer {
+public class AdsService {
 
     @Autowired
     private AdsRepository adsRepository;

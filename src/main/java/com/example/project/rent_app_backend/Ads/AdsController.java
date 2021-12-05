@@ -2,14 +2,10 @@ package com.example.project.rent_app_backend.Ads;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.bson.BsonBinarySubType;
-import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.Valid;
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -20,35 +16,35 @@ import java.util.List;
 public class AdsController {
 
     @Autowired
-    private AdsServer adsServer;
+    private AdsService adsService;
 
 
     @GetMapping(value = {"", "/"})
     public List<Ads> AdsList() {
-        return adsServer.findAll();
+        return adsService.findAll();
     }
 
     @GetMapping("/{id}")
     public Ads getAdsById(@PathVariable String id){
-        return adsServer.findById(id);
+        return adsService.findById(id);
     }
     
 
     @PostMapping(value = {"", "/"})
     public void createNewAd( @RequestParam("post") String post, @RequestParam("image") MultipartFile image ) throws IOException {
 
-      String imagePath =  adsServer.saveImage(image);
+      String imagePath =  adsService.saveImage(image);
 
        Ads ad = new ObjectMapper().readValue(post, Ads.class);
 
        ad.setPicture(imagePath);
         //  ad.setPicture(new Binary(BsonBinarySubType.BINARY,image.getBytes()));
-        adsServer.save(ad);
+        adsService.save(ad);
     }
 
 
         @DeleteMapping("/{id}")
     public void delete(@PathVariable String id){
-        adsServer.delete(id);
+        adsService.delete(id);
     }
 }

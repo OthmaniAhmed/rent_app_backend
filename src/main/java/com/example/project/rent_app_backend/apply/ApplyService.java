@@ -27,4 +27,8 @@ public class ApplyService {
         applyRepository.deleteById(id);
     }
 
+    public List<Apply> findReplysById(String id){
+        return applyRepository.findAppyByCreatorId(id);
+    }
+
 }

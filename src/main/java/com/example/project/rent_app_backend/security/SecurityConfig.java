@@ -18,6 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/api/ads/**",
             "/api**/auth**/userinfo**/**",
             "/api/apply/**",
+            "/api**/apply**/**",
 
     };
 
