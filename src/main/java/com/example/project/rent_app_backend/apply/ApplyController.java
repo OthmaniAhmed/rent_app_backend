@@ -23,4 +23,10 @@ public class ApplyController {
     public List<Apply> getReplysByUserId(@PathVariable String id){
         return applyService.findReplysById(id);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteReplyById(@PathVariable String id){
+        applyService.delete(id);
+    }
+
 }

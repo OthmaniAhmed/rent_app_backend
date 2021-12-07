@@ -31,4 +31,5 @@ public class ApplyService {
         return applyRepository.findAppyByCreatorId(id);
     }
 
+
 }
