@@ -1,6 +1,7 @@
 package com.example.project.rent_app_backend.Ads;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -36,15 +37,21 @@ public class AdsController {
       String imagePath =  adsService.saveImage(image);
 
        Ads ad = new ObjectMapper().readValue(post, Ads.class);
-
        ad.setPicture(imagePath);
         //  ad.setPicture(new Binary(BsonBinarySubType.BINARY,image.getBytes()));
         adsService.save(ad);
     }
 
 
-        @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable String id){
         adsService.delete(id);
+    }
+
+
+    @PutMapping("")
+    public void update(@RequestParam("id") String id ,@RequestParam("comment") String comment) throws JsonProcessingException {
+        Comments newComment = new ObjectMapper().readValue(comment,Comments.class);
+        adsService.update(id ,newComment );
     }
 }

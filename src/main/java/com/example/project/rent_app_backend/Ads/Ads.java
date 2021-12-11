@@ -3,6 +3,8 @@ package com.example.project.rent_app_backend.Ads;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Document(collection = "ads")
@@ -21,6 +23,7 @@ public class Ads {
     private String phoneNumber;
     private String email;
     private String creatorId;
+    private List<Comments> comments = new ArrayList<Comments>() ;
 
     public Ads(){
 
@@ -39,9 +42,16 @@ public class Ads {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.creatorId = creatorId;
+
     }
 
+    public List<Comments> getComments() {
+        return comments;
+    }
 
+    public void setComment(Comments comments) {
+        this.comments.add(comments);
+    }
 
     public void setRoomNumber(int roomNumber) {
         this.roomNumber = roomNumber;
@@ -64,6 +74,8 @@ public class Ads {
 
         return creatorId;
     }
+
+
 
     public void setCreatorId(String creatorId) {
         this.creatorId = creatorId;

@@ -43,6 +43,14 @@ public class AdsService {
         Files.write(path,bytes);
 
         return "../../../assets/photos/" +image.getOriginalFilename();
+    }
 
+    public void update(String id,Comments comments){
+        System.out.println(comments.getCommenterName());
+
+        Ads _ad = adsRepository.findById(id).get();
+        _ad.setComment(comments);
+
+        adsRepository.save(_ad);
     }
 }
