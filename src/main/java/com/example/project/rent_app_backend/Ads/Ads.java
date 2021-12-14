@@ -25,6 +25,8 @@ public class Ads {
     private String creatorId;
     private List<Comments> comments = new ArrayList<Comments>() ;
 
+    private Boolean aProved = false ;
+
     public Ads(){
 
     }
@@ -42,7 +44,19 @@ public class Ads {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.creatorId = creatorId;
+        this.aProved = false ;
+    }
 
+    public void setComments(List<Comments> comments) {
+        this.comments = comments;
+    }
+
+    public Boolean getaProved() {
+        return aProved;
+    }
+
+    public void setaProved(Boolean aProved) {
+        this.aProved = aProved;
     }
 
     public List<Comments> getComments() {
