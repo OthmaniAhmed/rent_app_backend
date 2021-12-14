@@ -29,15 +29,15 @@ public class AdsController {
     public Ads getAdsById(@PathVariable String id){
         return adsService.findById(id);
     }
-    
+
 
     @PostMapping(value = {"", "/"})
     public void createNewAd( @RequestParam("post") String post, @RequestParam("image") MultipartFile image ) throws IOException {
 
-      String imagePath =  adsService.saveImage(image);
+        String imagePath =  adsService.saveImage(image);
 
-       Ads ad = new ObjectMapper().readValue(post, Ads.class);
-       ad.setPicture(imagePath);
+        Ads ad = new ObjectMapper().readValue(post, Ads.class);
+        ad.setPicture(imagePath);
         //  ad.setPicture(new Binary(BsonBinarySubType.BINARY,image.getBytes()));
         adsService.save(ad);
     }
@@ -53,5 +53,10 @@ public class AdsController {
     public void update(@RequestParam("id") String id ,@RequestParam("comment") String comment) throws JsonProcessingException {
         Comments newComment = new ObjectMapper().readValue(comment,Comments.class);
         adsService.update(id ,newComment );
+    }
+
+    @GetMapping("/adbycreatorid/{id}")
+    public List<Ads> AdsListByCreatorId(@PathVariable String id){
+        return  adsService.findAdsByCreatorId(id);
     }
 }

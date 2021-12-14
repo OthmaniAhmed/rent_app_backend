@@ -53,4 +53,9 @@ public class AdsService {
 
         adsRepository.save(_ad);
     }
+
+    public List<Ads> findAdsByCreatorId(String id) {
+        return adsRepository.findAdByCreatorId(id);
+    }
+
 }
